@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Button } from './components/ui/button';
 import { 
   BookOpen, 
@@ -10,8 +10,6 @@ import {
   MessageCircle,
   Menu,
   X,
-  Apple,
-  PlaySquare,
   Copy,
   CheckCircle2,
   Mail,
