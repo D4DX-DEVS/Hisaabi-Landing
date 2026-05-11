@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './components/ui/button';
 import { 
   BookOpen, 
@@ -38,8 +38,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 glass rounded-full px-4 shadow-sm border border-border/50">
+      <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-3 cursor-pointer" onClick={(e) => handleScroll(e as any, 'support')}>
             <img src="/assets/app-icon.png" alt="Hisaabi Logo" className="w-10 h-10 rounded-xl" />
@@ -48,6 +48,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               <a href="#features" onClick={(e) => handleScroll(e, 'features')} className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">Features</a>
+              <a href="#screenshots" onClick={(e) => handleScroll(e, 'screenshots')} className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">App</a>
               <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">About</a>
               <a href="#support" onClick={(e) => handleScroll(e, 'support')} className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">Support</a>
               <a href="#download" onClick={(e) => handleScroll(e, 'download')}>
@@ -63,11 +64,12 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden glass absolute top-16 left-0 w-full">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
-            <a href="#features" onClick={(e) => handleScroll(e, 'features')} className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary">Features</a>
-            <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary">About</a>
-            <a href="#support" onClick={(e) => handleScroll(e, 'support')} className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary">Support</a>
+        <div className="md:hidden glass absolute top-20 left-0 w-full rounded-2xl border border-border/50 shadow-lg overflow-hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/50">
+            <a href="#features" onClick={(e) => handleScroll(e, 'features')} className="block px-3 py-2 rounded-xl text-base font-medium text-foreground hover:text-primary hover:bg-white/60">Features</a>
+            <a href="#screenshots" onClick={(e) => handleScroll(e, 'screenshots')} className="block px-3 py-2 rounded-xl text-base font-medium text-foreground hover:text-primary hover:bg-white/60">App</a>
+            <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="block px-3 py-2 rounded-xl text-base font-medium text-foreground hover:text-primary hover:bg-white/60">About</a>
+            <a href="#support" onClick={(e) => handleScroll(e, 'support')} className="block px-3 py-2 rounded-xl text-base font-medium text-foreground hover:text-primary hover:bg-white/60">Support</a>
           </div>
         </div>
       )}
@@ -178,6 +180,69 @@ const Features = () => {
   );
 };
 
+const Screenshots = () => {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const screenshots = [
+    "/assets/ss1.jpeg",
+    "/assets/ss2.jpeg",
+    "/assets/ss3.jpeg",
+    "/assets/ss4.jpeg",
+    "/assets/ss5.jpeg",
+    "/assets/ss6.jpeg",
+    "/assets/ss7.jpeg",
+    "/assets/ss8.jpeg",
+    "/assets/ss9.jpeg",
+  ];
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % screenshots.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [screenshots.length]);
+
+  return (
+    <section id="screenshots" className="py-24 relative z-10 bg-slate-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">App Experience</h2>
+          <p className="text-muted-foreground text-lg">A beautiful and intuitive interface designed to help you focus on what matters most.</p>
+        </motion.div>
+        
+        <div className="relative h-[600px] sm:h-[680px] w-full flex justify-center items-center">
+          <AnimatePresence>
+            <motion.div 
+              key={currentIndex}
+              initial={{ opacity: 0, x: 200, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -200, scale: 0.95 }}
+              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+              className="absolute w-[280px] sm:w-[320px] h-[600px] sm:h-[680px] bg-black rounded-[3rem] border-[8px] border-black shadow-2xl overflow-hidden ring-4 ring-slate-200/50"
+            >
+              {/* Phone Notch/Island */}
+              <div className="absolute top-1.5 inset-x-0 flex justify-center z-20">
+                <div className="w-20 h-5 bg-black rounded-full"></div>
+              </div>
+              
+              <img
+                src={screenshots[currentIndex]}
+                className="w-full h-full object-cover"
+                alt={`Screenshot ${currentIndex + 1}`}
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const About = () => {
   return (
     <section id="about" className="py-24 relative overflow-hidden bg-slate-50">
@@ -278,11 +343,8 @@ const Support = () => {
                 <p className="text-sm text-muted-foreground">Use Razorpay for fast and secure online payment.</p>
               </div>
               
-              <div className="w-full h-48 bg-slate-200 rounded-xl mb-4 overflow-hidden relative">
-                {/* Visual placeholder for razorpay illustration */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                  <Heart className="h-16 w-16 text-primary/40" />
-                </div>
+              <div className="w-full h-48 rounded-xl mb-4 overflow-hidden relative">
+                <img src="/assets/donate.png" alt="Donate Illustration" className="w-full h-full object-cover" />
               </div>
               
               <a href="https://rzp.io/rzp/muhasabah-app" target="_blank" rel="noreferrer" className="block w-full">
@@ -481,10 +543,11 @@ function App() {
   return (
     <div className="min-h-screen bg-background selection:bg-primary/30 text-foreground">
       <Navbar />
-      <main>
+      <main className="pt-16">
         <Support />
         <Hero />
         <Features />
+        <Screenshots />
         <About />
         <Download />
       </main>
