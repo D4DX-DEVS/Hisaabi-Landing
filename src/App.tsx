@@ -452,7 +452,7 @@ const Download = () => {
             <a href="https://apps.apple.com/in/app/hisaabi/id1620752442" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
               <img src="/assets/appstore.png" alt="Download on the App Store" className="h-14 w-auto object-contain" />
             </a>
-            <a href="https://play.google.com/store/apps/details?id=app.muhasabah" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
+            <a href="https://play.google.com/store/apps/details?id=app.hisaabi" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
               <img src="/assets/playstore.png" alt="Get it on Google Play" className="h-14 w-auto object-contain" />
             </a>
           </div>
