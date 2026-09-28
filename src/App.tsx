@@ -421,6 +421,34 @@ const Support = () => {
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="mt-10 bg-primary/5 border-2 border-primary/20 rounded-2xl p-6 text-center"
+        >
+          <p className="text-sm font-semibold text-foreground mb-3">
+            For queries, please contact us
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8">
+            <a
+              href="mailto:info@d4dx.co"
+              className="flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors"
+            >
+              <Mail className="h-4 w-4 shrink-0" />
+              info@d4dx.co
+            </a>
+            <a
+              href="tel:+919895804006"
+              className="flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors"
+            >
+              <Phone className="h-4 w-4 shrink-0" />
+              +91 98958 04006
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
