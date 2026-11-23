@@ -15,7 +15,8 @@ import {
   Mail,
   MapPin,
   Phone,
-  Star
+  Star,
+  Globe
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -301,16 +302,6 @@ const Support = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const bulletPoints = [
-    "Be a part of spreading the light of the Deen",
-    "Your donation brings Islamic knowledge closer to hearts",
-    "Help others stay consistent in faith — Donate today",
-    "Support Hisaabi App — A Sadaqah Jariyah opportunity",
-    "Empower the Ummah with modern tools",
-    "Give today, benefit forever",
-    "Build a generation connected to their faith"
-  ];
-
   return (
     <section id="support" className="pt-32 pb-24 relative z-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -326,15 +317,40 @@ const Support = () => {
             <h2 className="text-3xl md:text-5xl font-extrabold mb-8 text-foreground tracking-tight">
               Support This <span className="text-primary">Noble Cause</span>
             </h2>
-            
-            <ul className="space-y-4 mb-12">
-              {bulletPoints.map((text, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <div className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
-                  <span className="text-muted-foreground text-lg">{text}</span>
-                </li>
-              ))}
-            </ul>
+
+            <div className="space-y-5 mb-8 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Hisaabi.faith is a free Islamic knowledge resource created for the global community. It is available as a website and as apps on Android and iOS. Your donations are essential to cover the costs of maintaining and regularly updating the technology behind them.
+              </p>
+              <p>
+                If you benefit from Hisaabi, or if you value this effort to serve others, please donate and become a part of it. In doing so, you secure for yourself a Sadaqah Jariyah: an ongoing charity whose reward continues even after death, as taught by the Prophet Muhammad ﷺ.
+              </p>
+              <p lang="ml">
+                ആഗോള സമൂഹത്തിനായി ഒരുക്കിയിരിക്കുന്ന സൗജന്യ ഇസ്‌ലാമിക വിജ്ഞാന സ്രോതസ്സാണ് Hisaabi.faith എന്ന വെബ്സൈറ്റും അതിന്റെ ആൻഡ്രോയിഡ്, ഐഒഎസ് ആപ്പുകളും. ഇവയുടെ സാങ്കേതിക സംവിധാനങ്ങൾ നിലനിർത്താനും കാലാനുസൃതമായി പുതുക്കാനുമുള്ള ചെലവുകൾ കണ്ടെത്താൻ നിങ്ങളുടെ സംഭാവനകൾ അനിവാര്യമാണ്.
+              </p>
+              <p lang="ml">
+                ഹിസാബിയിൽ നിന്ന് നിങ്ങൾക്ക് പ്രയോജനം ലഭിക്കുന്നുണ്ടെങ്കിൽ, അല്ലെങ്കിൽ മറ്റുള്ളവർക്ക് സേവനം ചെയ്യാനുള്ള ഈ സദുദ്യമത്തെ നിങ്ങൾ വിലമതിക്കുന്നുണ്ടെങ്കിൽ, ദയവായി സംഭാവന നൽകി ഇതിൽ പങ്കാളികളാവുക. അതുവഴി നബി ﷺ പഠിപ്പിച്ചതുപോലെ, മരണശേഷവും പ്രതിഫലം ലഭിച്ചുകൊണ്ടിരിക്കുന്ന ഒരു നിലനിൽക്കുന്ന ദാനം (സ്വദഖ ജാരിയ) നിങ്ങൾക്കായി ഉറപ്പാക്കുക.
+              </p>
+            </div>
+
+            <blockquote className="border-l-4 border-primary bg-primary/5 rounded-r-2xl p-6 mb-8 space-y-3">
+              <p dir="rtl" lang="ar" className="text-2xl leading-loose text-foreground font-medium">
+                إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ
+              </p>
+              <p className="text-muted-foreground italic">
+                “When a person dies, all of his deeds come to an end except three: ongoing charity, knowledge from which others benefit, and a righteous child who prays for him.”
+              </p>
+              <p lang="ml" className="text-muted-foreground italic">
+                “ഒരു മനുഷ്യൻ മരണപ്പെട്ടാൽ മൂന്ന് കാര്യങ്ങളൊഴികെ അവന്റെ എല്ലാ കർമ്മങ്ങളും മുറിഞ്ഞുപോകുന്നു: നിലനിൽക്കുന്ന ദാനം, പ്രയോജനപ്പെടുന്ന അറിവ്, അവനുവേണ്ടി പ്രാർത്ഥിക്കുന്ന സൽസന്താനം.”
+              </p>
+              <footer className="text-sm font-semibold text-primary">(Sahih Muslim 1631)</footer>
+            </blockquote>
+
+            <a href="https://hisaabi.faith" target="_blank" rel="noreferrer" className="block w-full mb-8">
+              <Button variant="outline" className="w-full h-12 text-lg rounded-xl border-primary text-primary hover:bg-primary/10">
+                <Globe className="mr-2 h-5 w-5" /> Web Edition — hisaabi.faith
+              </Button>
+            </a>
 
             <div className="bg-slate-50 border border-border rounded-2xl p-6 shadow-sm">
               <div className="mb-4">
