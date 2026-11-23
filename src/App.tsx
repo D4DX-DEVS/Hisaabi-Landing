@@ -79,50 +79,6 @@ const Navbar = () => {
   );
 };
 
-const Hero = () => {
-  return (
-    <section id="hero" className="relative py-16 flex items-center justify-center overflow-hidden bg-slate-50">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
-      </div>
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col items-center"
-        >
-          {/* <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-border mb-8 shadow-sm">
-            <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-            <span className="text-sm font-medium text-foreground">Hisaabi v2.0.14 is live</span>
-          </div> */}
-          
-          <h1 className="text-3xl md:text-[2.6rem] leading-tight font-bold tracking-tight mb-6 text-foreground">
-            Strengthen Your Faith, <br className="hidden md:block" />
-            <span className="text-gradient">One Day at a Time</span>
-          </h1>
-          
-          <p className="mt-4 max-w-2xl text-xl text-muted-foreground mx-auto mb-10 leading-relaxed">
-            Hisaabi brings together prayer times, Quran reading, Dhikr, Duas, Qibla, and AI-powered Islamic guidance — in one beautiful app.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="https://apps.apple.com/in/app/hisaabi/id1620752442" target="_blank" rel="noreferrer" className="w-full sm:w-auto hover:opacity-80 transition-opacity">
-              <img src="/assets/appstore.png" alt="Download on the App Store" className="h-14 w-auto object-contain" />
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=app.hisaabi" target="_blank" rel="noreferrer" className="w-full sm:w-auto hover:opacity-80 transition-opacity">
-              <img src="/assets/playstore.png" alt="Get it on Google Play" className="h-14 w-auto object-contain" />
-            </a>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
 const FeatureCard = ({ icon: Icon, title, description, index }: any) => {
   return (
     <motion.div
@@ -589,7 +545,6 @@ function App() {
       <Navbar />
       <main className="pt-16">
         <Support />
-        <Hero />
         <Features />
         <Screenshots />
         <About />
