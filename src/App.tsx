@@ -39,8 +39,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 glass rounded-full px-4 shadow-sm border border-border/50">
-      <div className="max-w-7xl mx-auto">
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 glass rounded-full px-4 shadow-sm border border-border/50">
+      <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-3 cursor-pointer" onClick={(e) => handleScroll(e as any, 'support')}>
             <img src="/assets/app-icon.png" alt="Hisaabi Logo" className="w-10 h-10 rounded-xl" />
@@ -109,7 +109,7 @@ const Features = () => {
 
   return (
     <section id="features" className="py-16 relative z-10 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">Everything You Need</h2>
           <p className="text-muted-foreground text-lg">Replacing multiple apps with one comprehensive Islamic companion designed to keep you connected to your deen.</p>
@@ -147,7 +147,7 @@ const Screenshots = () => {
 
   return (
     <section id="screenshots" className="py-16 relative z-10 bg-slate-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -192,7 +192,7 @@ const About = () => {
     <section id="about" className="py-16 relative overflow-hidden bg-slate-50">
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-72 h-72 bg-primary/5 rounded-full blur-[100px]" />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-white rounded-3xl p-6 md:p-8 border border-border flex flex-col md:flex-row items-center gap-8 shadow-sm">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
@@ -248,7 +248,7 @@ const Support = () => {
 
   return (
     <section id="support" className="pt-28 pb-16 relative z-10 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Column */}
@@ -465,7 +465,7 @@ const Download = () => {
 const Footer = () => {
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-8 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
           {/* Left Side */}
           <div>
