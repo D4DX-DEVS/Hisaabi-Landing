@@ -265,7 +265,7 @@ const About = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex-1 relative w-full aspect-square md:aspect-auto md:h-[280px]"
+            className="flex-1 relative w-full h-52 md:h-[280px]"
           >
             <div className="absolute inset-0 bg-primary/5 rounded-2xl transform rotate-3 scale-105" />
             <div className="absolute inset-0 bg-white rounded-2xl overflow-hidden flex items-center justify-center border border-border shadow-lg">
