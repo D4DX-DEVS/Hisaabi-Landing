@@ -333,12 +333,6 @@ const Support = () => {
               </p>
             </div>
 
-            <a href="https://hisaabi.faith" target="_blank" rel="noreferrer" className="block w-full mb-8">
-              <Button variant="outline" className="w-full h-12 text-lg rounded-xl border-primary text-primary hover:bg-primary/10">
-                <Globe className="mr-2 h-5 w-5" /> Web Edition — hisaabi.faith
-              </Button>
-            </a>
-
             <div className="bg-slate-50 border border-border rounded-2xl p-6 shadow-sm">
               <div className="mb-4">
                 <span className="text-xs font-bold text-primary tracking-wider uppercase">Razorpay Payment</span>
@@ -498,6 +492,11 @@ const Download = () => {
             </a>
             <a href="https://play.google.com/store/apps/details?id=app.hisaabi" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
               <img src="/assets/playstore.png" alt="Get it on Google Play" className="h-14 w-auto object-contain" />
+            </a>
+            <a href="https://hisaabi.faith" target="_blank" rel="noreferrer">
+              <Button variant="outline" className="h-14 px-6 text-base rounded-xl border-primary text-primary hover:bg-primary/10">
+                <Globe className="mr-2 h-5 w-5" /> Web Edition
+              </Button>
             </a>
           </div>
         </motion.div>
