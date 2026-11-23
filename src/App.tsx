@@ -117,20 +117,6 @@ const Hero = () => {
             </a>
           </div>
         </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="mt-20 relative mx-auto max-w-5xl"
-        >
-          <div className="relative rounded-3xl bg-white border border-border p-2 shadow-2xl">
-            <div className="aspect-[16/9] md:aspect-[21/9] rounded-2xl bg-slate-100 overflow-hidden relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent"></div>
-              <img src="/assets/app-icon.png" alt="App Preview" className="w-32 h-32 md:w-48 md:h-48 opacity-80 object-contain drop-shadow-xl" />
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
@@ -493,10 +479,14 @@ const Download = () => {
             <a href="https://play.google.com/store/apps/details?id=app.hisaabi" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
               <img src="/assets/playstore.png" alt="Get it on Google Play" className="h-14 w-auto object-contain" />
             </a>
-            <a href="https://hisaabi.faith" target="_blank" rel="noreferrer">
-              <Button variant="outline" className="h-14 px-6 text-base rounded-xl border-primary text-primary hover:bg-primary/10">
-                <Globe className="mr-2 h-5 w-5" /> Web Edition
-              </Button>
+            <a href="https://hisaabi.faith" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
+              <div className="h-14 px-5 rounded-xl bg-black border border-slate-500 text-white flex items-center gap-3 text-left">
+                <Globe className="h-8 w-8" />
+                <div className="leading-tight">
+                  <div className="text-[11px] tracking-wide">Open the</div>
+                  <div className="text-xl font-semibold">Web Edition</div>
+                </div>
+              </div>
             </a>
           </div>
         </motion.div>
