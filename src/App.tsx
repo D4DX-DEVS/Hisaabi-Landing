@@ -42,7 +42,7 @@ const Navbar = () => {
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 glass rounded-full px-4 shadow-sm border border-border/50">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={(e) => handleScroll(e as any, 'hero')}>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={(e) => handleScroll(e as any, 'support')}>
             <img src="/assets/app-icon.png" alt="Hisaabi Logo" className="w-10 h-10 rounded-xl" />
             <span className="text-xl font-bold text-foreground tracking-tight">Hisaabi</span>
           </div>
@@ -291,7 +291,7 @@ const Support = () => {
   };
 
   return (
-    <section id="support" className="py-16 relative z-10 bg-white">
+    <section id="support" className="pt-28 pb-16 relative z-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -588,11 +588,11 @@ function App() {
     <div className="min-h-screen bg-background selection:bg-primary/30 text-foreground">
       <Navbar />
       <main className="pt-16">
+        <Support />
         <Hero />
         <Features />
         <Screenshots />
         <About />
-        <Support />
         <Download />
       </main>
       <Footer />
