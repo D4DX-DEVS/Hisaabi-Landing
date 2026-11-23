@@ -99,7 +99,7 @@ const Hero = () => {
             <span className="text-sm font-medium text-foreground">Hisaabi v2.0.14 is live</span>
           </div> */}
           
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-foreground">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-foreground">
             Strengthen Your Faith, <br className="hidden md:block" />
             <span className="text-gradient">One Day at a Time</span>
           </h1>
@@ -168,7 +168,7 @@ const Features = () => {
     <section id="features" className="py-24 relative z-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Everything You Need</h2>
+          <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">Everything You Need</h2>
           <p className="text-muted-foreground text-lg">Replacing multiple apps with one comprehensive Islamic companion designed to keep you connected to your deen.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -212,7 +212,7 @@ const Screenshots = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">App Experience</h2>
+          <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">App Experience</h2>
           <p className="text-muted-foreground text-lg">A beautiful and intuitive interface designed to help you focus on what matters most.</p>
         </motion.div>
         
@@ -257,7 +257,7 @@ const About = () => {
             viewport={{ once: true }}
             className="flex-1"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Why Hisaabi?</h2>
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">Why Hisaabi?</h2>
             <div className="space-y-4 text-lg text-muted-foreground">
               <p>Hisaabi is built to help Muslims stay consistent in their faith. Whether it's praying on time, reciting the Quran daily, or building a habit of Dhikr.</p>
               <ul className="space-y-4 mt-8">
@@ -314,7 +314,7 @@ const Support = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex flex-col"
           >
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-8 text-foreground tracking-tight">
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
               Support This <span className="text-primary">Noble Cause</span>
             </h2>
 
@@ -380,7 +380,7 @@ const Support = () => {
             <div className="bg-white border border-border rounded-3xl p-8 shadow-xl shadow-slate-200/50">
               <div className="mb-6">
                 <span className="text-xs font-bold text-primary tracking-wider uppercase">Direct UPI & Bank</span>
-                <h3 className="text-2xl font-bold text-foreground mt-2">Scan QR or transfer directly</h3>
+                <h3 className="text-xl font-bold text-foreground mt-2">Scan QR or transfer directly</h3>
               </div>
               
               <div className="flex justify-center mb-6">
@@ -482,7 +482,7 @@ const Download = () => {
         >
           <img src="/assets/app-icon.png" alt="Hisaabi Icon" className="w-20 h-20 rounded-2xl shadow-lg mb-6" />
           
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">Download Hisaabi</h2>
+          <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">Download Hisaabi</h2>
           <p className="text-muted-foreground mb-6">Available on iOS and Android.</p>
           
           <div className="flex items-center gap-1 mb-8">
