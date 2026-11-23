@@ -236,7 +236,7 @@ const About = () => {
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-72 h-72 bg-primary/5 rounded-full blur-[100px]" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="bg-white rounded-3xl p-8 md:p-12 border border-border flex flex-col md:flex-row items-center gap-12 shadow-sm">
+        <div className="bg-white rounded-3xl p-6 md:p-8 border border-border flex flex-col md:flex-row items-center gap-8 shadow-sm">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -244,9 +244,9 @@ const About = () => {
             className="flex-1"
           >
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-6 text-foreground">Why Hisaabi?</h2>
-            <div className="space-y-4 text-lg text-muted-foreground">
+            <div className="space-y-3 text-base text-muted-foreground">
               <p>Hisaabi is built to help Muslims stay consistent in their faith. Whether it's praying on time, reciting the Quran daily, or building a habit of Dhikr.</p>
-              <ul className="space-y-4 mt-8">
+              <ul className="space-y-3 mt-5">
                 {[
                   "All-in-one unified experience",
                   "Habit tracking and visual streaks",
@@ -254,8 +254,8 @@ const About = () => {
                   "Built for communities and families"
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="h-6 w-6 text-primary shrink-0" />
-                    <span className="text-foreground font-medium">{item}</span>
+                    <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
+                    <span className="text-foreground font-medium text-[15px]">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -265,11 +265,11 @@ const About = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex-1 relative w-full aspect-square md:aspect-auto md:h-[400px]"
+            className="flex-1 relative w-full aspect-square md:aspect-auto md:h-[280px]"
           >
             <div className="absolute inset-0 bg-primary/5 rounded-2xl transform rotate-3 scale-105" />
             <div className="absolute inset-0 bg-white rounded-2xl overflow-hidden flex items-center justify-center border border-border shadow-lg">
-               <img src="/assets/app-icon.png" alt="App Logo" className="w-1/2 object-contain" />
+               <img src="/assets/app-icon.png" alt="App Logo" className="w-2/5 object-contain" />
             </div>
           </motion.div>
         </div>
