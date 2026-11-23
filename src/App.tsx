@@ -42,7 +42,7 @@ const Navbar = () => {
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 glass rounded-full px-4 shadow-sm border border-border/50">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={(e) => handleScroll(e as any, 'support')}>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={(e) => handleScroll(e as any, 'hero')}>
             <img src="/assets/app-icon.png" alt="Hisaabi Logo" className="w-10 h-10 rounded-xl" />
             <span className="text-xl font-bold text-foreground tracking-tight">Hisaabi</span>
           </div>
@@ -71,6 +71,7 @@ const Navbar = () => {
             <a href="#screenshots" onClick={(e) => handleScroll(e, 'screenshots')} className="block px-3 py-2 rounded-xl text-base font-medium text-foreground hover:text-primary hover:bg-white/60">App</a>
             <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="block px-3 py-2 rounded-xl text-base font-medium text-foreground hover:text-primary hover:bg-white/60">About</a>
             <a href="#support" onClick={(e) => handleScroll(e, 'support')} className="block px-3 py-2 rounded-xl text-base font-medium text-foreground hover:text-primary hover:bg-white/60">Support</a>
+            <a href="#download" onClick={(e) => handleScroll(e, 'download')} className="block px-3 py-2 rounded-xl text-base font-medium text-primary hover:bg-white/60">Get the App</a>
           </div>
         </div>
       )}
@@ -280,6 +281,7 @@ const About = () => {
 
 const Support = () => {
   const [copied, setCopied] = useState(false);
+  const [ml, setMl] = useState(false);
   const upiId = "vyapar.176971524101@hdfcbank";
 
   const handleCopy = () => {
@@ -289,7 +291,7 @@ const Support = () => {
   };
 
   return (
-    <section id="support" className="pt-28 pb-16 relative z-10 bg-white">
+    <section id="support" className="py-16 relative z-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -304,19 +306,28 @@ const Support = () => {
               Support This <span className="text-primary">Noble Cause</span>
             </h2>
 
-            <div className="space-y-5 mb-8 text-lg text-muted-foreground leading-relaxed">
+            <div className="md:hidden inline-flex rounded-full border border-border p-1 mb-4 text-sm font-medium">
+              <button onClick={() => setMl(false)} className={`px-4 py-1 rounded-full ${!ml ? 'bg-primary text-white' : 'text-muted-foreground'}`}>English</button>
+              <button onClick={() => setMl(true)} lang="ml" className={`px-4 py-1 rounded-full ${ml ? 'bg-primary text-white' : 'text-muted-foreground'}`}>മലയാളം</button>
+            </div>
+
+            <div className="mb-8 text-base text-muted-foreground leading-relaxed space-y-5">
+              <div className={`space-y-5 ${ml ? 'hidden' : ''} md:block`}>
               <p>
                 Hisaabi.faith is a free Islamic knowledge resource created for the global community. It is available as a website and as apps on Android and iOS. Your donations are essential to cover the costs of maintaining and regularly updating the technology behind them.
               </p>
               <p>
                 If you benefit from Hisaabi, or if you value this effort to serve others, please donate and become a part of it. In doing so, you secure for yourself a Sadaqah Jariyah: an ongoing charity whose reward continues even after death, as taught by the Prophet Muhammad ﷺ.
               </p>
+              </div>
+              <div className={`space-y-5 ${ml ? '' : 'hidden'} md:block`}>
               <p lang="ml">
                 ആഗോള സമൂഹത്തിനായി ഒരുക്കിയിരിക്കുന്ന സൗജന്യ ഇസ്‌ലാമിക വിജ്ഞാന സ്രോതസ്സാണ് Hisaabi.faith എന്ന വെബ്സൈറ്റും അതിന്റെ ആൻഡ്രോയിഡ്, ഐഒഎസ് ആപ്പുകളും. ഇവയുടെ സാങ്കേതിക സംവിധാനങ്ങൾ നിലനിർത്താനും കാലാനുസൃതമായി പുതുക്കാനുമുള്ള ചെലവുകൾ കണ്ടെത്താൻ നിങ്ങളുടെ സംഭാവനകൾ അനിവാര്യമാണ്.
               </p>
               <p lang="ml">
                 ഹിസാബിയിൽ നിന്ന് നിങ്ങൾക്ക് പ്രയോജനം ലഭിക്കുന്നുണ്ടെങ്കിൽ, അല്ലെങ്കിൽ മറ്റുള്ളവർക്ക് സേവനം ചെയ്യാനുള്ള ഈ സദുദ്യമത്തെ നിങ്ങൾ വിലമതിക്കുന്നുണ്ടെങ്കിൽ, ദയവായി സംഭാവന നൽകി ഇതിൽ പങ്കാളികളാവുക. അതുവഴി നബി ﷺ പഠിപ്പിച്ചതുപോലെ, മരണശേഷവും പ്രതിഫലം ലഭിച്ചുകൊണ്ടിരിക്കുന്ന ഒരു നിലനിൽക്കുന്ന ദാനം (സ്വദഖ ജാരിയ) നിങ്ങൾക്കായി ഉറപ്പാക്കുക.
               </p>
+              </div>
             </div>
 
             <div className="bg-slate-50 border border-border rounded-2xl p-6 shadow-sm">
@@ -536,7 +547,7 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                <a href="mailto:mail@d4dx.co" className="hover:text-white transition-colors">mail@d4dx.co</a>
+                <a href="mailto:info@d4dx.co" className="hover:text-white transition-colors">info@d4dx.co</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0" />
@@ -562,8 +573,8 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex gap-6">
-            <a href="https://merchant.razorpay.com/policy/PV2XAkNJXKVU7X/terms" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="https://merchant.razorpay.com/policy/PV2XAkNJXKVU7X/terms" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="https://d4dx.co/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="https://d4dx.co/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Terms of Service</a>
             <a href="https://d4dx.co/contacts-us/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Contact Us</a>
           </div>
         </div>
@@ -577,11 +588,11 @@ function App() {
     <div className="min-h-screen bg-background selection:bg-primary/30 text-foreground">
       <Navbar />
       <main className="pt-16">
-        <Support />
         <Hero />
         <Features />
         <Screenshots />
         <About />
+        <Support />
         <Download />
       </main>
       <Footer />
