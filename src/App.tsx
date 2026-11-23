@@ -333,19 +333,6 @@ const Support = () => {
               </p>
             </div>
 
-            <blockquote className="border-l-4 border-primary bg-primary/5 rounded-r-2xl p-6 mb-8 space-y-3">
-              <p dir="rtl" lang="ar" className="text-2xl leading-loose text-foreground font-medium">
-                إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ
-              </p>
-              <p className="text-muted-foreground italic">
-                “When a person dies, all of his deeds come to an end except three: ongoing charity, knowledge from which others benefit, and a righteous child who prays for him.”
-              </p>
-              <p lang="ml" className="text-muted-foreground italic">
-                “ഒരു മനുഷ്യൻ മരണപ്പെട്ടാൽ മൂന്ന് കാര്യങ്ങളൊഴികെ അവന്റെ എല്ലാ കർമ്മങ്ങളും മുറിഞ്ഞുപോകുന്നു: നിലനിൽക്കുന്ന ദാനം, പ്രയോജനപ്പെടുന്ന അറിവ്, അവനുവേണ്ടി പ്രാർത്ഥിക്കുന്ന സൽസന്താനം.”
-              </p>
-              <footer className="text-sm font-semibold text-primary">(Sahih Muslim 1631)</footer>
-            </blockquote>
-
             <a href="https://hisaabi.faith" target="_blank" rel="noreferrer" className="block w-full mb-8">
               <Button variant="outline" className="w-full h-12 text-lg rounded-xl border-primary text-primary hover:bg-primary/10">
                 <Globe className="mr-2 h-5 w-5" /> Web Edition — hisaabi.faith
@@ -377,6 +364,19 @@ const Support = () => {
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
+            <blockquote className="border-l-4 border-primary bg-primary/5 rounded-r-2xl p-6 mb-8 space-y-3 hadith-box">
+              <p dir="rtl" lang="ar" className="text-2xl leading-loose text-foreground font-medium">
+                إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ
+              </p>
+              <p className="text-muted-foreground italic">
+                “When a person dies, all of his deeds come to an end except three: ongoing charity, knowledge from which others benefit, and a righteous child who prays for him.”
+              </p>
+              <p lang="ml" className="text-muted-foreground italic">
+                “ഒരു മനുഷ്യൻ മരണപ്പെട്ടാൽ മൂന്ന് കാര്യങ്ങളൊഴികെ അവന്റെ എല്ലാ കർമ്മങ്ങളും മുറിഞ്ഞുപോകുന്നു: നിലനിൽക്കുന്ന ദാനം, പ്രയോജനപ്പെടുന്ന അറിവ്, അവനുവേണ്ടി പ്രാർത്ഥിക്കുന്ന സൽസന്താനം.”
+              </p>
+              <footer className="text-sm font-semibold text-primary">(Sahih Muslim 1631)</footer>
+            </blockquote>
+
             <div className="bg-white border border-border rounded-3xl p-8 shadow-xl shadow-slate-200/50">
               <div className="mb-6">
                 <span className="text-xs font-bold text-primary tracking-wider uppercase">Direct UPI & Bank</span>

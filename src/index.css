@@ -69,3 +69,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary);
 }
+
+[lang="ml"] { font-family: 'Noto Sans Malayalam', 'Inter', sans-serif; line-height: 1.9; }
+[lang="ar"] { font-family: 'Noto Naskh Arabic', serif; }
+.hadith-box [lang="ml"] { font-family: 'Noto Serif Malayalam', serif; }
