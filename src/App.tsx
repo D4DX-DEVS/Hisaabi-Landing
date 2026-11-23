@@ -80,7 +80,7 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative py-24 flex items-center justify-center overflow-hidden bg-slate-50">
+    <section id="hero" className="relative py-16 flex items-center justify-center overflow-hidden bg-slate-50">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
@@ -151,7 +151,7 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-24 relative z-10 bg-white">
+    <section id="features" className="py-16 relative z-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">Everything You Need</h2>
@@ -189,7 +189,7 @@ const Screenshots = () => {
   }, [screenshots.length]);
 
   return (
-    <section id="screenshots" className="py-24 relative z-10 bg-slate-50 overflow-hidden">
+    <section id="screenshots" className="py-16 relative z-10 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -232,7 +232,7 @@ const Screenshots = () => {
 
 const About = () => {
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-slate-50">
+    <section id="about" className="py-16 relative overflow-hidden bg-slate-50">
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-72 h-72 bg-primary/5 rounded-full blur-[100px]" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -289,7 +289,7 @@ const Support = () => {
   };
 
   return (
-    <section id="support" className="pt-32 pb-24 relative z-10 bg-white">
+    <section id="support" className="pt-28 pb-16 relative z-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
