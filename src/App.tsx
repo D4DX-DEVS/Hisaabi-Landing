@@ -128,15 +128,15 @@ const Features = () => {
 
 const Screenshots = () => {
   const screenshots = [
-    "/assets/hand/ph1.webp",
-    "/assets/hand/ph2.webp",
-    "/assets/hand/ph3.webp",
-    "/assets/hand/ph4.webp",
-    "/assets/hand/ph5.webp",
-    "/assets/hand/ph6.webp",
-    "/assets/hand/ph7.webp",
-    "/assets/hand/ph8.webp",
-    "/assets/hand/ph9.webp",
+    "/assets/ss1.jpeg",
+    "/assets/ss2.jpeg",
+    "/assets/ss3.jpeg",
+    "/assets/ss4.jpeg",
+    "/assets/ss5.jpeg",
+    "/assets/ss6.jpeg",
+    "/assets/ss7.jpeg",
+    "/assets/ss8.jpeg",
+    "/assets/ss9.jpeg",
   ];
   const points = ["Easy to use", "Fast & Reliable", "Secure & Private", "Cross-platform"];
 
@@ -155,7 +155,7 @@ const Screenshots = () => {
 
           <div className="relative grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-10 lg:gap-14 items-center">
             {/* Phone: screens rotate inside a fixed frame */}
-            <PhotoPhone screens={screenshots} flush className="mx-auto w-[300px] sm:w-[380px] lg:-mb-12" />
+            <PhoneShowcase screens={screenshots} className="my-8" />
 
             {/* Text */}
             <div>
@@ -238,6 +238,42 @@ const About = () => {
   );
 };
 
+// Large upright phone with rotating app screens over a green design (rings, glow, dots).
+const PhoneShowcase = ({ screens, className = "" }: { screens: string[]; className?: string }) => {
+  const [idx, setIdx] = React.useState(0);
+  React.useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % screens.length), 3000);
+    return () => clearInterval(t);
+  }, [screens.length]);
+
+  return (
+    <div className={`relative mx-auto w-[250px] sm:w-[290px] ${className}`}>
+      <div className="absolute -inset-12 rounded-full bg-gradient-to-br from-primary/35 via-primary/15 to-transparent" />
+      <div className="absolute -inset-20 rounded-full border border-primary/20" />
+      <div className="absolute -inset-5 rounded-full border border-primary/25" />
+      <div className="absolute -right-14 top-6 w-24 h-24 opacity-60 [background-image:radial-gradient(#10b981_1.6px,transparent_1.6px)] [background-size:12px_12px]" />
+      <div className="absolute -left-12 bottom-10 w-20 h-20 opacity-50 [background-image:radial-gradient(#10b981_1.6px,transparent_1.6px)] [background-size:12px_12px]" />
+      <div className="absolute -left-16 top-24 h-12 w-12 rounded-2xl bg-white shadow-lg flex items-center justify-center rotate-[-8deg]">
+        <Clock className="h-6 w-6 text-primary" />
+      </div>
+      <div className="absolute -right-16 bottom-28 h-12 w-12 rounded-2xl bg-white shadow-lg flex items-center justify-center rotate-[8deg]">
+        <BookOpen className="h-6 w-6 text-primary" />
+      </div>
+      <div className="relative w-full aspect-[722/1600] bg-black rounded-[2.4rem] border-[8px] border-black shadow-2xl overflow-hidden ring-4 ring-white/70">
+        {screens.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt="Hisaabi app screen"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+            style={{ opacity: i === idx ? 1 : 0 }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 // Real photo of a hand holding a phone (app screenshot composited on the screen) in a soft green arch with real leaf photos.
 // Several screens crossfade; one stays still.
 const PhotoPhone = ({ screens, flush = false, className = "" }: { screens: string[]; flush?: boolean; className?: string }) => {
@@ -249,7 +285,7 @@ const PhotoPhone = ({ screens, flush = false, className = "" }: { screens: strin
   }, [screens.length]);
 
   // flush: the wrist runs off the bottom of its card; otherwise it fades out.
-  const fade = flush ? undefined : "linear-gradient(to bottom, #000 80%, transparent 100%)";
+  const fade = flush ? undefined : "linear-gradient(to bottom, #000 90%, transparent 100%)";
 
   return (
     <div className={`relative aspect-[1181/1000] ${className}`}>
