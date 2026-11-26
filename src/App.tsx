@@ -15,7 +15,6 @@ import {
   Mail,
   MapPin,
   Phone,
-  Star,
   Globe,
   Languages,
   ArrowRight
@@ -193,44 +192,43 @@ const Screenshots = () => {
 const About = () => {
   return (
     <section id="about" className="py-16 relative overflow-hidden bg-slate-50">
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-72 h-72 bg-primary/5 rounded-full blur-[100px]" />
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="bg-white rounded-3xl p-6 md:p-8 border border-border flex flex-col md:flex-row items-center gap-8 shadow-sm">
-          <motion.div 
+        <div className="bg-white rounded-3xl border border-border shadow-sm overflow-hidden flex flex-col md:flex-row md:items-stretch">
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex-1"
+            className="flex-1 p-6 md:p-10"
           >
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">Why Hisaabi?</h2>
-            <div className="space-y-3 text-base text-muted-foreground">
-              <p>Hisaabi is built to help Muslims stay consistent in their faith. Whether it's praying on time, reciting the Quran daily, or building a habit of Dhikr.</p>
-              <ul className="space-y-3 mt-5">
-                {[
-                  "All-in-one unified experience",
-                  "Habit tracking and visual streaks",
-                  "Modern AI Islamic Assistant",
-                  "Built for communities and families"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                    <span className="text-foreground font-medium text-[15px]">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-foreground">Why Hisaabi?</h2>
+            <p className="text-base text-muted-foreground mb-6">
+              Hisaabi is built to help Muslims stay consistent in their faith. Whether it's praying on time, reciting the Quran daily, or building a habit of Dhikr.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "All-in-one unified experience",
+                "Habit tracking and visual streaks",
+                "Modern AI Islamic Assistant",
+                "Built for communities and families"
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <CheckCircle2 className="h-5 w-5 fill-primary text-white shrink-0" />
+                  <span className="text-foreground font-medium text-[15px]">{item}</span>
+                </li>
+              ))}
+            </ul>
           </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex-1 relative w-full h-52 md:h-[280px]"
+            className="md:w-[48%] p-3 md:pl-0"
           >
-            <div className="absolute inset-0 bg-primary/5 rounded-2xl transform rotate-3 scale-105" />
-            <div className="absolute inset-0 bg-white rounded-2xl overflow-hidden flex items-center justify-center border border-border shadow-lg">
-               <img src="/assets/app-icon.png" alt="App Logo" className="w-2/5 object-contain" />
-            </div>
+            <img
+              src="/assets/mosque.jpg"
+              alt="A mosque at sunset reflected in still water"
+              className="w-full h-56 md:h-full min-h-[260px] object-cover rounded-2xl"
+            />
           </motion.div>
         </div>
       </div>
@@ -276,34 +274,17 @@ const PhoneShowcase = ({ screens, className = "" }: { screens: string[]; classNa
 
 // Real photo of a hand holding a phone (app screenshot composited on the screen) in a soft green arch with real leaf photos.
 // Several screens crossfade; one stays still.
-const PhotoPhone = ({ screens, flush = false, className = "" }: { screens: string[]; flush?: boolean; className?: string }) => {
-  const [idx, setIdx] = React.useState(0);
-  React.useEffect(() => {
-    if (screens.length < 2) return;
-    const t = setInterval(() => setIdx((i) => (i + 1) % screens.length), 3000);
-    return () => clearInterval(t);
-  }, [screens.length]);
-
-  // flush: the wrist runs off the bottom of its card; otherwise it fades out.
-  const fade = flush ? undefined : "linear-gradient(to bottom, #000 90%, transparent 100%)";
-
-  return (
-    <div className={`relative aspect-[1181/1000] ${className}`}>
-      <div className="absolute inset-[8%] rounded-full bg-primary/20 blur-3xl" />
-      <img src="/assets/leaf-left.webp" alt="" aria-hidden className="absolute -left-[4%] bottom-[8%] w-[30%] pointer-events-none" style={{ WebkitMaskImage: "radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%)", maskImage: "radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%)" }} />
-      <img src="/assets/leaf-right.webp" alt="" aria-hidden className="absolute -right-[2%] top-[30%] w-[26%] pointer-events-none" style={{ WebkitMaskImage: "radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%)", maskImage: "radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%)" }} />
-      {screens.map((src, i) => (
-        <img
-          key={src}
-          src={src}
-          alt="Hisaabi app in hand"
-          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ${flush ? "max-lg:[-webkit-mask-image:linear-gradient(to_bottom,#000_80%,transparent)] max-lg:[mask-image:linear-gradient(to_bottom,#000_80%,transparent)]" : ""}`}
-          style={{ opacity: i === idx ? 1 : 0, WebkitMaskImage: fade, maskImage: fade }}
-        />
-      ))}
-    </div>
-  );
-};
+const PhotoPhone = ({ src, className = "" }: { src: string; className?: string }) => (
+  <div className={`relative aspect-[412/1000] ${className}`}>
+    <div className="absolute -inset-x-[35%] inset-y-[10%] rounded-full bg-primary/20 blur-3xl" />
+    <img
+      src={src}
+      alt="Hisaabi app in hand"
+      className="absolute inset-0 w-full h-full object-contain"
+      style={{ WebkitMaskImage: "linear-gradient(to bottom, #000 88%, transparent 100%)", maskImage: "linear-gradient(to bottom, #000 88%, transparent 100%)" }}
+    />
+  </div>
+);
 
 const Support = () => {
   const [copied, setCopied] = useState(false);
@@ -391,7 +372,7 @@ const Support = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="relative"
           >
-            <PhotoPhone screens={["/assets/hand/ph9.webp"]} className="mx-auto w-full max-w-[460px]" />
+            <PhotoPhone src="/assets/hand/ph9.webp" className="mx-auto w-full max-w-[250px]" />
           </motion.div>
         </div>
 
@@ -461,44 +442,51 @@ const Support = () => {
   );
 };
 
+// Mosque skyline silhouette used in the download banner and footer.
+const Skyline = ({ className = "", fill = "currentColor" }: { className?: string; fill?: string }) => (
+  <svg viewBox="0 0 1200 160" preserveAspectRatio="xMidYMax slice" className={className} aria-hidden fill={fill}>
+    <path d="M0 160 V128 H60 V96 C60 70 100 70 100 96 V128 H150 V110 H162 V60 L168 40 L174 60 V110 H186 V128 H260 V104 C260 60 340 60 340 104 V128 H380 V70 L386 48 L392 70 V128 H460 V120 H520 V100 C520 72 560 72 560 100 V120 H640 V128 H700 V90 C700 40 800 40 800 90 V128 H830 V64 L836 40 L842 64 V128 H890 V128 H940 V98 C940 70 990 70 990 98 V128 H1040 V110 H1052 V62 L1058 42 L1064 62 V110 H1076 V128 H1140 V104 C1140 84 1170 84 1170 104 V128 H1200 V160 Z" />
+  </svg>
+);
+
 const Download = () => {
   return (
-    <section id="download" className="py-20 relative bg-slate-50 border-t border-border">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id="download" className="py-12 relative bg-slate-50 border-t border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col items-center"
+          transition={{ duration: 0.6 }}
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-950 via-emerald-800 to-lime-600 px-6 py-8 md:px-10"
         >
-          <img src="/assets/app-icon.png" alt="Hisaabi Icon" className="w-20 h-20 rounded-2xl shadow-lg mb-6" />
-          
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">Download Hisaabi</h2>
-          <p className="text-muted-foreground mb-6">Available on iOS and Android.</p>
-          
-          <div className="flex items-center gap-1 mb-8">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star key={star} className="h-5 w-5 fill-amber-400 text-amber-400" />
-            ))}
-            <span className="text-sm text-muted-foreground ml-2">Rated on App Store & Play Store</span>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="https://apps.apple.com/in/app/hisaabi/id1620752442" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
-              <img src="/assets/appstore.png" alt="Download on the App Store" className="h-14 w-auto object-contain" />
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=app.hisaabi" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
-              <img src="/assets/playstore.png" alt="Get it on Google Play" className="h-14 w-auto object-contain" />
-            </a>
-            <a href="https://hisaabi.faith" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
-              <div className="h-14 px-5 rounded-xl bg-black border border-slate-500 text-white flex items-center gap-3 text-left">
-                <Globe className="h-8 w-8" />
-                <div className="leading-tight">
-                  <div className="text-[11px] tracking-wide">Open the</div>
-                  <div className="text-xl font-semibold">Web Edition</div>
-                </div>
+          <Skyline className="absolute right-0 bottom-0 h-28 w-[55%] text-white/10 pointer-events-none" />
+          <div className="relative flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+            <div className="flex items-center gap-4">
+              <img src="/assets/app-icon.png" alt="Hisaabi Icon" className="w-16 h-16 rounded-2xl shadow-lg" />
+              <div>
+                <h2 className="text-2xl font-bold tracking-tight text-white">Download Hisaabi</h2>
+                <p className="text-sm text-emerald-100/80">Available on iOS and Android.</p>
               </div>
-            </a>
+            </div>
+            <div className="hidden lg:block h-14 w-px bg-white/25" />
+            <div className="flex flex-wrap gap-3 items-center">
+              <a href="https://apps.apple.com/in/app/hisaabi/id1620752442" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
+                <img src="/assets/appstore.png" alt="Download on the App Store" className="h-12 w-auto object-contain" />
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=app.hisaabi" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
+                <img src="/assets/playstore.png" alt="Get it on Google Play" className="h-12 w-auto object-contain" />
+              </a>
+              <a href="https://hisaabi.faith" target="_blank" rel="noreferrer" className="hover:opacity-80 transition-opacity">
+                <div className="h-12 px-4 rounded-xl bg-black border border-slate-500 text-white flex items-center gap-2.5 text-left">
+                  <Globe className="h-7 w-7" />
+                  <div className="leading-tight">
+                    <div className="text-[10px] tracking-wide">Open the</div>
+                    <div className="text-lg font-semibold">Web Edition</div>
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -508,43 +496,26 @@ const Download = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 text-slate-300 pt-16 pb-8 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-          {/* Left Side */}
+    <footer className="relative overflow-hidden bg-gradient-to-b from-emerald-950 to-[#06201c] text-slate-300 pt-14 pb-8">
+      <Skyline className="absolute inset-x-0 bottom-0 h-32 w-full text-emerald-300/10 pointer-events-none" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_auto] gap-10 mb-10 items-start">
           <div>
-            <div className="flex flex-col gap-2 mb-6">
-              <div className="flex items-center gap-3">
-                <img src="/assets/app-icon.png" alt="Hisaabi Logo" className="w-10 h-10 rounded-lg" />
-                <div>
-                  <h3 className="text-xl font-bold text-white leading-tight">Hisaabi</h3>
-                  <p className="text-xs text-slate-400">Built by D4DX Innovations LLP</p>
-                </div>
+            <div className="flex items-center gap-3 mb-4">
+              <img src="/assets/app-icon.png" alt="Hisaabi Logo" className="w-11 h-11 rounded-xl" />
+              <div>
+                <h3 className="text-xl font-bold text-white leading-tight">Hisaabi</h3>
+                <p className="text-xs text-emerald-200/70">Built by D4DX Innovations LLP</p>
               </div>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm mb-6">
+            <p className="text-sm text-slate-300/80 leading-relaxed max-w-sm">
               Making Hisaabi guidance accessible through a clear, practical app experience for families, students, and community volunteers.
             </p>
-            {/* <div className="flex items-center gap-4">
-              <a href="#" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-              </a>
-            </div> */}
           </div>
 
-          {/* Right Side */}
-          <div className="md:pl-12 lg:pl-24">
-            <h3 className="text-lg font-bold text-white mb-6">Contact</h3>
-            <ul className="space-y-4 text-sm text-slate-400">
+          <div className="md:border-l md:border-white/10 md:pl-10">
+            <h3 className="text-lg font-bold text-white mb-4">Contact</h3>
+            <ul className="space-y-3 text-sm text-slate-300/80">
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
                 <a href="mailto:info@d4dx.co" className="hover:text-white transition-colors">info@d4dx.co</a>
@@ -563,9 +534,14 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+
+          <div className="md:border-l md:border-white/10 md:pl-10 flex items-center gap-3 text-sm text-slate-200">
+            <span className="leading-snug">A noble initiative for<br />a better society</span>
+            <Heart className="h-7 w-7 text-primary" />
+          </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
           <div>
             <p>© 2026 Hisaabi. All rights reserved.</p>
             <p className="mt-1">
