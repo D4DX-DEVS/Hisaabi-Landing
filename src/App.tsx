@@ -198,7 +198,7 @@ const About = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex-1 p-6 md:p-10"
+            className="flex-1 p-6 md:p-10 md:flex md:flex-col md:justify-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-foreground">Why Hisaabi?</h2>
             <p className="text-base text-muted-foreground mb-6">
@@ -496,8 +496,8 @@ const Download = () => {
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-emerald-950 to-[#06201c] text-slate-300 pt-14 pb-8">
-      <Skyline className="absolute inset-x-0 bottom-0 h-32 w-full text-emerald-300/10 pointer-events-none" />
+    <footer className="relative overflow-hidden bg-gradient-to-b from-emerald-950 to-[#06201c] text-slate-300 pt-14 pb-24">
+      <Skyline className="absolute inset-x-0 bottom-0 h-20 w-full text-emerald-300/10 pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_auto] gap-10 mb-10 items-start">
           <div>
