@@ -275,7 +275,7 @@ const PhoneShowcase = ({ screens, className = "" }: { screens: string[]; classNa
 // Real photo of a hand holding a phone (app screenshot composited on the screen) in a soft green arch with real leaf photos.
 // Several screens crossfade; one stays still.
 const PhotoPhone = ({ src, className = "" }: { src: string; className?: string }) => (
-  <div className={`relative aspect-[412/1000] ${className}`}>
+  <div className={`relative aspect-[398/1000] ${className}`}>
     <div className="absolute -inset-x-[35%] inset-y-[10%] rounded-full bg-primary/20 blur-3xl" />
     <img
       src={src}
