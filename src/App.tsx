@@ -16,7 +16,8 @@ import {
   MapPin,
   Phone,
   Star,
-  Globe
+  Globe,
+  Languages
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -237,7 +238,7 @@ const About = () => {
 
 const Support = () => {
   const [copied, setCopied] = useState(false);
-  const [ml, setMl] = useState(false);
+  const [ml, setMl] = useState(true);
   const upiId = "vyapar.176971524101@hdfcbank";
 
   const handleCopy = () => {
@@ -256,7 +257,7 @@ const Support = () => {
   ];
 
   return (
-    <section id="support" className="pt-28 pb-16 relative z-10 bg-white overflow-hidden">
+    <section id="support" className="pt-32 pb-16 relative z-10 bg-white overflow-hidden">
       <div className="absolute -top-24 right-0 w-[520px] h-[520px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
@@ -270,17 +271,20 @@ const Support = () => {
             <span className="inline-block rounded-full bg-primary/10 text-primary text-sm font-semibold px-4 py-1.5 mb-5">
               Support This Noble Cause
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6 text-foreground">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-6 whitespace-nowrap text-foreground">
               Give today, <span className="text-primary">benefit forever</span>
             </h2>
 
-            <div className="md:hidden inline-flex rounded-full border border-border p-1 mb-4 text-sm font-medium">
-              <button onClick={() => setMl(false)} className={`px-4 py-1 rounded-full ${!ml ? 'bg-primary text-white' : 'text-muted-foreground'}`}>English</button>
-              <button onClick={() => setMl(true)} lang="ml" className={`px-4 py-1 rounded-full ${ml ? 'bg-primary text-white' : 'text-muted-foreground'}`}>മലയാളം</button>
-            </div>
+            <button
+              onClick={() => setMl(!ml)}
+              className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-medium px-3 py-1.5 mb-4 hover:bg-primary/10 transition-colors"
+            >
+              <Languages className="h-3.5 w-3.5" />
+              {ml ? 'Translate to English' : <span lang="ml">മലയാളത്തിൽ വായിക്കുക</span>}
+            </button>
 
             <div className="mb-8 text-base text-muted-foreground leading-relaxed space-y-5">
-              <div className={`space-y-5 ${ml ? 'hidden' : ''} md:block`}>
+              <div className={`space-y-5 ${ml ? 'hidden' : ''}`}>
                 <p>
                   Hisaabi.faith is a free Islamic knowledge resource created for the global community. It is available as a website and as apps on Android and iOS. Your donations are essential to cover the costs of maintaining and regularly updating the technology behind them.
                 </p>
@@ -288,7 +292,7 @@ const Support = () => {
                   If you benefit from Hisaabi, or if you value this effort to serve others, please donate and become a part of it. In doing so, you secure for yourself a Sadaqah Jariyah: an ongoing charity whose reward continues even after death, as taught by the Prophet Muhammad ﷺ.
                 </p>
               </div>
-              <div className={`space-y-5 ${ml ? '' : 'hidden'} md:block`}>
+              <div className={`space-y-5 ${ml ? '' : 'hidden'}`}>
                 <p lang="ml">
                   ആഗോള സമൂഹത്തിനായി ഒരുക്കിയിരിക്കുന്ന സൗജന്യ ഇസ്‌ലാമിക വിജ്ഞാന സ്രോതസ്സാണ് Hisaabi.faith എന്ന വെബ്സൈറ്റും അതിന്റെ ആൻഡ്രോയിഡ്, ഐഒഎസ് ആപ്പുകളും. ഇവയുടെ സാങ്കേതിക സംവിധാനങ്ങൾ നിലനിർത്താനും കാലാനുസൃതമായി പുതുക്കാനുമുള്ള ചെലവുകൾ കണ്ടെത്താൻ നിങ്ങളുടെ സംഭാവനകൾ അനിവാര്യമാണ്.
                 </p>
@@ -318,9 +322,12 @@ const Support = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-[2rem] rotate-2 scale-[1.03]" />
-            <div className="relative rounded-[2rem] overflow-hidden border border-border shadow-xl bg-white">
-              <img src="/assets/donate.png" alt="Support Hisaabi" className="w-full h-full object-cover max-h-[460px]" />
+            <div className="mx-auto w-[240px] sm:w-[260px] rounded-t-[7rem] bg-gradient-to-b from-primary/15 via-primary/5 to-transparent pt-10 px-6 pb-0 relative">
+              <div className="absolute -left-6 bottom-10 w-24 h-24 bg-primary/20 rounded-full blur-2xl" />
+              <div className="absolute -right-6 top-24 w-24 h-24 bg-primary/20 rounded-full blur-2xl" />
+              <div className="relative w-full aspect-[722/1600] bg-black rounded-[2.2rem] border-[7px] border-black shadow-2xl overflow-hidden ring-4 ring-slate-200/60 rotate-3">
+                <img src="/assets/ss9.jpeg" alt="Hisaabi app — Become a Donor" className="w-full h-full object-cover" />
+              </div>
             </div>
           </motion.div>
         </div>
