@@ -193,7 +193,7 @@ const About = () => {
   return (
     <section id="about" className="py-16 relative overflow-hidden bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="bg-white rounded-3xl border border-border shadow-sm overflow-hidden flex flex-col md:flex-row md:items-stretch">
+        <div className="bg-gradient-to-br from-primary/10 via-white to-white rounded-3xl border border-primary/20 shadow-sm overflow-hidden flex flex-col md:flex-row md:items-stretch">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
