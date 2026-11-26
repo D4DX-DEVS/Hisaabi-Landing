@@ -17,7 +17,8 @@ import {
   Phone,
   Star,
   Globe,
-  Languages
+  Languages,
+  ArrowRight
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -138,6 +139,7 @@ const Screenshots = () => {
     "/assets/ss8.jpeg",
     "/assets/ss9.jpeg",
   ];
+  const points = ["Easy to use", "Fast & Reliable", "Secure & Private", "Cross-platform"];
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -147,42 +149,65 @@ const Screenshots = () => {
   }, [screenshots.length]);
 
   return (
-    <section id="screenshots" className="py-16 relative z-10 bg-slate-50 overflow-hidden">
+    <section id="screenshots" className="py-16 relative z-10 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="relative rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/10 via-primary/5 to-white overflow-hidden px-6 py-12 md:px-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">App Experience</h2>
-          <p className="text-muted-foreground text-lg">A beautiful and intuitive interface designed to help you focus on what matters most.</p>
-        </motion.div>
-        
-        <div className="relative h-[600px] sm:h-[680px] w-full flex justify-center items-center">
-          <AnimatePresence>
-            <motion.div 
-              key={currentIndex}
-              initial={{ opacity: 0, x: 200, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -200, scale: 0.95 }}
-              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-              className="absolute w-[280px] sm:w-[320px] h-[600px] sm:h-[680px] bg-black rounded-[3rem] border-[8px] border-black shadow-2xl overflow-hidden ring-4 ring-slate-200/50"
-            >
-              {/* Phone Notch/Island */}
-              <div className="absolute top-1.5 inset-x-0 flex justify-center z-20">
-                <div className="w-20 h-5 bg-black rounded-full"></div>
+          <div className="absolute -left-16 bottom-0 w-72 h-72 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute right-10 -top-16 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-10 lg:gap-14 items-center">
+            {/* Phone: screens rotate inside a fixed frame */}
+            <div className="mx-auto w-[220px] sm:w-[250px]">
+              <div className="relative w-full aspect-[722/1600] bg-black rounded-[2.4rem] border-[7px] border-black shadow-2xl overflow-hidden ring-4 ring-white/70">
+                <AnimatePresence>
+                  <motion.img
+                    key={currentIndex}
+                    src={screenshots[currentIndex]}
+                    alt="Hisaabi app screen"
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -40 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </AnimatePresence>
               </div>
-              
-              <img
-                src={screenshots[currentIndex]}
-                className="w-full h-full object-cover"
-                alt={`Screenshot ${currentIndex + 1}`}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            </div>
+
+            {/* Text */}
+            <div>
+              <div className="h-1 w-24 rounded-full bg-primary mb-4" />
+              <p className="text-lg font-semibold text-foreground mb-2">App Experience</p>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight leading-snug text-foreground mb-4">
+                A beautiful and intuitive interface designed to help you focus on what matters most.
+              </h2>
+              <p className="text-muted-foreground mb-7 max-w-md">
+                Simple, elegant and easy to use — Hisaabi brings all the essential features at your fingertips.
+              </p>
+              <a href="#download" onClick={(e) => { e.preventDefault(); document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                <Button className="h-12 px-7 rounded-full bg-gradient-to-r from-emerald-700 to-emerald-500 text-white shadow-md">
+                  Download Hisaabi <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+            </div>
+
+            {/* Points */}
+            <ul className="space-y-4 lg:pl-4">
+              {points.map((t) => (
+                <li key={t} className="flex items-center gap-3">
+                  <CheckCircle2 className="h-6 w-6 fill-primary text-white shrink-0" />
+                  <span className="font-medium text-foreground">{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
