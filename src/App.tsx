@@ -238,7 +238,7 @@ const About = () => {
   );
 };
 
-// Real photo of a hand holding a phone (app screenshot composited on the screen) in a soft green arch.
+// Real photo of a hand holding a phone (app screenshot composited on the screen) in a soft green arch with real leaf photos.
 // Several screens crossfade; one stays still.
 const PhotoPhone = ({ screens, className = "" }: { screens: string[]; className?: string }) => {
   const [idx, setIdx] = React.useState(0);
@@ -251,6 +251,8 @@ const PhotoPhone = ({ screens, className = "" }: { screens: string[]; className?
   return (
     <div className={`relative aspect-square ${className}`}>
       <div className="absolute inset-x-[10%] top-0 bottom-0 rounded-t-full bg-gradient-to-b from-primary/25 via-primary/10 to-transparent border border-primary/20" />
+      <img src="/assets/leaf-left.webp" alt="" aria-hidden className="absolute -left-[8%] bottom-[2%] w-[36%] drop-shadow-md pointer-events-none" style={{ WebkitMaskImage: "linear-gradient(to right, #000 70%, transparent 100%)", maskImage: "linear-gradient(to right, #000 70%, transparent 100%)" }} />
+      <img src="/assets/leaf-right.webp" alt="" aria-hidden className="absolute -right-[3%] top-[36%] w-[32%] drop-shadow-md pointer-events-none" style={{ WebkitMaskImage: "linear-gradient(to right, #000 70%, transparent 100%)", maskImage: "linear-gradient(to right, #000 70%, transparent 100%)" }} />
       {screens.map((src, i) => (
         <img
           key={src}
