@@ -246,20 +246,32 @@ const Support = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const bank = [
+    ["Account Name", "D4DX INNOVATIONS LLP"],
+    ["TID", "82182968"],
+    ["Bank", "HDFC SmartHub Vyapar"],
+    ["Account number", "50200102639272"],
+    ["IFSC code", "HDFC0002811"],
+    ["Branch", "CIVIL STATION"],
+  ];
+
   return (
-    <section id="support" className="pt-28 pb-16 relative z-10 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Column */}
+    <section id="support" className="pt-28 pb-16 relative z-10 bg-white overflow-hidden">
+      <div className="absolute -top-24 right-0 w-[520px] h-[520px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+
+        {/* Hero row */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30, y: 20 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex flex-col"
           >
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
-              Support This <span className="text-primary">Noble Cause</span>
+            <span className="inline-block rounded-full bg-primary/10 text-primary text-sm font-semibold px-4 py-1.5 mb-5">
+              Support This Noble Cause
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6 text-foreground">
+              Give today, <span className="text-primary">benefit forever</span>
             </h2>
 
             <div className="md:hidden inline-flex rounded-full border border-border p-1 mb-4 text-sm font-medium">
@@ -269,149 +281,111 @@ const Support = () => {
 
             <div className="mb-8 text-base text-muted-foreground leading-relaxed space-y-5">
               <div className={`space-y-5 ${ml ? 'hidden' : ''} md:block`}>
-              <p>
-                Hisaabi.faith is a free Islamic knowledge resource created for the global community. It is available as a website and as apps on Android and iOS. Your donations are essential to cover the costs of maintaining and regularly updating the technology behind them.
-              </p>
-              <p>
-                If you benefit from Hisaabi, or if you value this effort to serve others, please donate and become a part of it. In doing so, you secure for yourself a Sadaqah Jariyah: an ongoing charity whose reward continues even after death, as taught by the Prophet Muhammad ﷺ.
-              </p>
+                <p>
+                  Hisaabi.faith is a free Islamic knowledge resource created for the global community. It is available as a website and as apps on Android and iOS. Your donations are essential to cover the costs of maintaining and regularly updating the technology behind them.
+                </p>
+                <p>
+                  If you benefit from Hisaabi, or if you value this effort to serve others, please donate and become a part of it. In doing so, you secure for yourself a Sadaqah Jariyah: an ongoing charity whose reward continues even after death, as taught by the Prophet Muhammad ﷺ.
+                </p>
               </div>
               <div className={`space-y-5 ${ml ? '' : 'hidden'} md:block`}>
-              <p lang="ml">
-                ആഗോള സമൂഹത്തിനായി ഒരുക്കിയിരിക്കുന്ന സൗജന്യ ഇസ്‌ലാമിക വിജ്ഞാന സ്രോതസ്സാണ് Hisaabi.faith എന്ന വെബ്സൈറ്റും അതിന്റെ ആൻഡ്രോയിഡ്, ഐഒഎസ് ആപ്പുകളും. ഇവയുടെ സാങ്കേതിക സംവിധാനങ്ങൾ നിലനിർത്താനും കാലാനുസൃതമായി പുതുക്കാനുമുള്ള ചെലവുകൾ കണ്ടെത്താൻ നിങ്ങളുടെ സംഭാവനകൾ അനിവാര്യമാണ്.
-              </p>
-              <p lang="ml">
-                ഹിസാബിയിൽ നിന്ന് നിങ്ങൾക്ക് പ്രയോജനം ലഭിക്കുന്നുണ്ടെങ്കിൽ, അല്ലെങ്കിൽ മറ്റുള്ളവർക്ക് സേവനം ചെയ്യാനുള്ള ഈ സദുദ്യമത്തെ നിങ്ങൾ വിലമതിക്കുന്നുണ്ടെങ്കിൽ, ദയവായി സംഭാവന നൽകി ഇതിൽ പങ്കാളികളാവുക. അതുവഴി നബി ﷺ പഠിപ്പിച്ചതുപോലെ, മരണശേഷവും പ്രതിഫലം ലഭിച്ചുകൊണ്ടിരിക്കുന്ന ഒരു നിലനിൽക്കുന്ന ദാനം (സ്വദഖ ജാരിയ) നിങ്ങൾക്കായി ഉറപ്പാക്കുക.
-              </p>
+                <p lang="ml">
+                  ആഗോള സമൂഹത്തിനായി ഒരുക്കിയിരിക്കുന്ന സൗജന്യ ഇസ്‌ലാമിക വിജ്ഞാന സ്രോതസ്സാണ് Hisaabi.faith എന്ന വെബ്സൈറ്റും അതിന്റെ ആൻഡ്രോയിഡ്, ഐഒഎസ് ആപ്പുകളും. ഇവയുടെ സാങ്കേതിക സംവിധാനങ്ങൾ നിലനിർത്താനും കാലാനുസൃതമായി പുതുക്കാനുമുള്ള ചെലവുകൾ കണ്ടെത്താൻ നിങ്ങളുടെ സംഭാവനകൾ അനിവാര്യമാണ്.
+                </p>
+                <p lang="ml">
+                  ഹിസാബിയിൽ നിന്ന് നിങ്ങൾക്ക് പ്രയോജനം ലഭിക്കുന്നുണ്ടെങ്കിൽ, അല്ലെങ്കിൽ മറ്റുള്ളവർക്ക് സേവനം ചെയ്യാനുള്ള ഈ സദുദ്യമത്തെ നിങ്ങൾ വിലമതിക്കുന്നുണ്ടെങ്കിൽ, ദയവായി സംഭാവന നൽകി ഇതിൽ പങ്കാളികളാവുക. അതുവഴി നബി ﷺ പഠിപ്പിച്ചതുപോലെ, മരണശേഷവും പ്രതിഫലം ലഭിച്ചുകൊണ്ടിരിക്കുന്ന ഒരു നിലനിൽക്കുന്ന ദാനം (സ്വദഖ ജാരിയ) നിങ്ങൾക്കായി ഉറപ്പാക്കുക.
+                </p>
               </div>
             </div>
 
-            <div className="bg-slate-50 border border-border rounded-2xl p-6 shadow-sm">
-              <div className="mb-4">
-                <span className="text-xs font-bold text-primary tracking-wider uppercase">Razorpay Payment</span>
-                <h3 className="text-xl font-bold text-foreground mt-1">Quick support via gateway</h3>
-                <p className="text-sm text-muted-foreground">Use Razorpay for fast and secure online payment.</p>
-              </div>
-              
-              <div className="w-full h-48 rounded-xl mb-4 overflow-hidden relative">
-                <img src="/assets/donate.png" alt="Donate Illustration" className="w-full h-full object-cover" />
-              </div>
-              
-              <a href="https://rzp.io/rzp/muhasabah-app" target="_blank" rel="noreferrer" className="block w-full">
-                <Button className="w-full h-12 text-lg rounded-xl shadow-md bg-[#2b84ea] hover:bg-[#1a73d9]">
+            <div className="flex flex-wrap gap-3">
+              <a href="https://rzp.io/rzp/muhasabah-app" target="_blank" rel="noreferrer">
+                <Button className="h-12 px-7 text-base rounded-full shadow-md">
                   <Heart className="mr-2 h-5 w-5" /> Support Now
+                </Button>
+              </a>
+              <a href="https://hisaabi.faith" target="_blank" rel="noreferrer">
+                <Button variant="outline" className="h-12 px-7 text-base rounded-full border-primary text-primary hover:bg-primary/10">
+                  <Globe className="mr-2 h-5 w-5" /> Web Edition
                 </Button>
               </a>
             </div>
           </motion.div>
 
-          {/* Right Column */}
           <motion.div
             initial={{ opacity: 0, x: 30, y: 20 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="relative"
           >
-            <blockquote className="border-l-4 border-primary bg-primary/5 rounded-r-2xl p-6 mb-8 space-y-3 hadith-box">
-              <p dir="rtl" lang="ar" className="text-2xl leading-loose text-foreground font-medium">
-                إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ
-              </p>
-              <p className="text-muted-foreground italic">
-                “When a person dies, all of his deeds come to an end except three: ongoing charity, knowledge from which others benefit, and a righteous child who prays for him.”
-              </p>
-              <p lang="ml" className="text-muted-foreground italic">
-                “ഒരു മനുഷ്യൻ മരണപ്പെട്ടാൽ മൂന്ന് കാര്യങ്ങളൊഴികെ അവന്റെ എല്ലാ കർമ്മങ്ങളും മുറിഞ്ഞുപോകുന്നു: നിലനിൽക്കുന്ന ദാനം, പ്രയോജനപ്പെടുന്ന അറിവ്, അവനുവേണ്ടി പ്രാർത്ഥിക്കുന്ന സൽസന്താനം.”
-              </p>
-              <footer className="text-sm font-semibold text-primary">(Sahih Muslim 1631)</footer>
-            </blockquote>
-
-            <div className="bg-white border border-border rounded-3xl p-8 shadow-xl shadow-slate-200/50">
-              <div className="mb-6">
-                <span className="text-xs font-bold text-primary tracking-wider uppercase">Direct UPI & Bank</span>
-                <h3 className="text-xl font-bold text-foreground mt-2">Scan QR or transfer directly</h3>
-              </div>
-              
-              <div className="flex justify-center mb-6">
-                <div className="p-4 bg-white border border-slate-200 rounded-2xl shadow-sm inline-block">
-                  <img src="/assets/qr.jpeg" alt="UPI QR Code" className="w-48 h-48 object-contain" />
-                </div>
-              </div>
-              
-              <p className="text-center text-sm text-muted-foreground mb-6">
-                Open any UPI app, tap <strong>Scan QR</strong>, and donate
-              </p>
-              
-              <div className="flex items-center justify-between bg-slate-50 border border-border rounded-xl p-3 mb-8">
-                <span className="text-sm font-medium text-foreground truncate">{upiId}</span>
-                <button 
-                  onClick={handleCopy}
-                  className="flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors ml-4 shrink-0 bg-primary/10 px-3 py-1.5 rounded-lg"
-                >
-                  {copied ? <CheckCircle2 className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                  {copied ? 'Copied' : 'Copy'}
-                </button>
-              </div>
-
-              <div className="space-y-6">
-                <table className="w-full text-sm">
-                  <tbody>
-                    <tr className="border-b border-slate-100">
-                      <td className="py-3 text-muted-foreground">Account Name</td>
-                      <td className="py-3 text-right font-medium text-foreground">D4DX INNOVATIONS LLP</td>
-                    </tr>
-                    <tr className="border-b border-slate-100">
-                      <td className="py-3 text-muted-foreground">TID</td>
-                      <td className="py-3 text-right font-medium text-foreground">82182968</td>
-                    </tr>
-                    <tr className="border-b border-slate-100">
-                      <td className="py-3 text-muted-foreground">Bank</td>
-                      <td className="py-3 text-right font-medium text-foreground">HDFC SmartHub Vyapar</td>
-                    </tr>
-                    <tr className="border-b border-slate-100">
-                      <td className="py-3 text-muted-foreground">Account number</td>
-                      <td className="py-3 text-right font-medium text-foreground">50200102639272</td>
-                    </tr>
-                    <tr className="border-b border-slate-100">
-                      <td className="py-3 text-muted-foreground">IFSC code</td>
-                      <td className="py-3 text-right font-medium text-foreground">HDFC0002811</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 text-muted-foreground">Branch</td>
-                      <td className="py-3 text-right font-medium text-foreground">CIVIL STATION</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-[2rem] rotate-2 scale-[1.03]" />
+            <div className="relative rounded-[2rem] overflow-hidden border border-border shadow-xl bg-white">
+              <img src="/assets/donate.png" alt="Support Hisaabi" className="w-full h-full object-cover max-h-[460px]" />
             </div>
           </motion.div>
         </div>
 
+        {/* Donate strip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="mt-10 bg-primary/5 border-2 border-primary/20 rounded-2xl p-6 text-center"
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mt-14 rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 via-white to-primary/5 p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center"
         >
-          <p className="text-sm font-semibold text-foreground mb-3">
-            For queries, please contact us
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8">
-            <a
-              href="mailto:info@d4dx.co"
-              className="flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors"
-            >
-              <Mail className="h-4 w-4 shrink-0" />
-              info@d4dx.co
-            </a>
-            <a
-              href="tel:+919895804006"
-              className="flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors"
-            >
-              <Phone className="h-4 w-4 shrink-0" />
-              +91 98958 04006
-            </a>
+          {/* Hadith */}
+          <blockquote className="border-l-4 border-primary pl-5 space-y-3 hadith-box">
+            <p dir="rtl" lang="ar" className="text-xl leading-loose text-foreground font-medium">
+              إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ
+            </p>
+            <p className="text-sm text-muted-foreground italic">
+              “When a person dies, all of his deeds come to an end except three: ongoing charity, knowledge from which others benefit, and a righteous child who prays for him.”
+            </p>
+            <p lang="ml" className="text-sm text-muted-foreground italic">
+              “ഒരു മനുഷ്യൻ മരണപ്പെട്ടാൽ മൂന്ന് കാര്യങ്ങളൊഴികെ അവന്റെ എല്ലാ കർമ്മങ്ങളും മുറിഞ്ഞുപോകുന്നു: നിലനിൽക്കുന്ന ദാനം, പ്രയോജനപ്പെടുന്ന അറിവ്, അവനുവേണ്ടി പ്രാർത്ഥിക്കുന്ന സൽസന്താനം.”
+            </p>
+            <footer className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">(Sahih Muslim 1631)</footer>
+          </blockquote>
+
+          {/* QR */}
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-foreground mb-4">Scan QR or transfer directly</h3>
+            <div className="p-3 bg-white border border-slate-200 rounded-2xl shadow-sm inline-block">
+              <img src="/assets/qr.jpeg" alt="UPI QR Code" className="w-40 h-40 object-contain" />
+            </div>
+            <p className="text-xs text-muted-foreground mt-3 mb-3">Open any UPI app, tap <strong>Scan QR</strong>, and donate</p>
+            <div className="flex items-center justify-between bg-white border border-border rounded-xl p-2 pl-3">
+              <span className="text-xs font-medium text-foreground truncate">{upiId}</span>
+              <button
+                onClick={handleCopy}
+                className="flex items-center gap-1 text-xs font-medium text-primary ml-3 shrink-0 bg-primary/10 px-2.5 py-1.5 rounded-lg"
+              >
+                {copied ? <CheckCircle2 className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                {copied ? 'Copied' : 'Copy'}
+              </button>
+            </div>
           </div>
+
+          {/* Bank */}
+          <dl className="text-sm">
+            {bank.map(([k, v]) => (
+              <div key={k} className="flex justify-between gap-4 py-2 border-b border-primary/10 last:border-0">
+                <dt className="text-muted-foreground">{k}</dt>
+                <dd className="font-medium text-foreground text-right">{v}</dd>
+              </div>
+            ))}
+          </dl>
         </motion.div>
+
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 text-sm">
+          <span className="font-semibold text-foreground">For queries, please contact us</span>
+          <a href="mailto:info@d4dx.co" className="flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors">
+            <Mail className="h-4 w-4 shrink-0" /> info@d4dx.co
+          </a>
+          <a href="tel:+919895804006" className="flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors">
+            <Phone className="h-4 w-4 shrink-0" /> +91 98958 04006
+          </a>
+        </div>
       </div>
     </section>
   );
