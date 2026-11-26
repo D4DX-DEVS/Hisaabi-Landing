@@ -128,15 +128,15 @@ const Features = () => {
 
 const Screenshots = () => {
   const screenshots = [
-    "/assets/ss1.jpeg",
-    "/assets/ss2.jpeg",
-    "/assets/ss3.jpeg",
-    "/assets/ss4.jpeg",
-    "/assets/ss5.jpeg",
-    "/assets/ss6.jpeg",
-    "/assets/ss7.jpeg",
-    "/assets/ss8.jpeg",
-    "/assets/ss9.jpeg",
+    "/assets/hand/ph1.jpg",
+    "/assets/hand/ph2.jpg",
+    "/assets/hand/ph3.jpg",
+    "/assets/hand/ph4.jpg",
+    "/assets/hand/ph5.jpg",
+    "/assets/hand/ph6.jpg",
+    "/assets/hand/ph7.jpg",
+    "/assets/hand/ph8.jpg",
+    "/assets/hand/ph9.jpg",
   ];
   const points = ["Easy to use", "Fast & Reliable", "Secure & Private", "Cross-platform"];
 
@@ -155,7 +155,7 @@ const Screenshots = () => {
 
           <div className="relative grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-10 lg:gap-14 items-center">
             {/* Phone: screens rotate inside a fixed frame */}
-            <HandPhone hand={false} screens={screenshots} className="mx-auto w-[280px] sm:w-[320px]" />
+            <PhotoPhone screens={screenshots} className="mx-auto w-[300px] sm:w-[360px]" />
 
             {/* Text */}
             <div>
@@ -238,9 +238,9 @@ const About = () => {
   );
 };
 
-// Illustrated phone (optionally held by a hand) inside a mosque arch with leaves.
-// Several screens crossfade; one screen stays still.
-const HandPhone = ({ screens, hand = true, className = "" }: { screens: string[]; hand?: boolean; className?: string }) => {
+// Real photo of a hand holding a phone (app screenshot composited on the screen) in a soft green arch.
+// Several screens crossfade; one stays still.
+const PhotoPhone = ({ screens, className = "" }: { screens: string[]; className?: string }) => {
   const [idx, setIdx] = React.useState(0);
   React.useEffect(() => {
     if (screens.length < 2) return;
@@ -248,127 +248,23 @@ const HandPhone = ({ screens, hand = true, className = "" }: { screens: string[]
     return () => clearInterval(t);
   }, [screens.length]);
 
-  const skin = "#f3cfae";
-  const shade = "#dfae86";
-  const leaf = "M0 0 C18 -34 62 -34 84 0 C62 34 18 34 0 0 Z";
-  const vein = "M4 0 L78 0";
-  const tilt = hand ? 12 : 4;
-
-  const Leaf = ({ t, c, v = "#ffffff" }: { t: string; c: string; v?: string }) => (
-    <g transform={t}>
-      <path d={leaf} fill={c} />
-      <path d={vein} stroke={v} strokeOpacity="0.35" strokeWidth="1.5" fill="none" />
-    </g>
-  );
-
   return (
-    <svg viewBox="0 0 400 520" className={className} role="img" aria-label="Hisaabi app">
-      <defs>
-        <linearGradient id="hp-arch" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#d3eedb" />
-          <stop offset="0.6" stopColor="#eaf7ee" />
-          <stop offset="1" stopColor="#f7fcf9" />
-        </linearGradient>
-        <clipPath id="hp-screen">
-          <rect x="131" y="66" width="138" height="306" rx="18" />
-        </clipPath>
-        <clipPath id="hp-frame">
-          <rect x="0" y="0" width="400" height="520" />
-        </clipPath>
-      </defs>
-
-      <g clipPath="url(#hp-frame)">
-        {/* arch + inner outline + pattern dots */}
-        <path d="M28 520 V210 Q28 12 200 12 Q372 12 372 210 V520 Z" fill="url(#hp-arch)" stroke="#c6e6d0" strokeWidth="2" />
-        <path d="M50 520 V215 Q50 38 200 38 Q350 38 350 215 V520 Z" fill="none" stroke="#dff2e6" strokeWidth="2" />
-        <path d="M200 20 L200 36" stroke="#c6e6d0" strokeWidth="2" />
-        <circle cx="200" cy="16" r="4" fill="#b7dec3" />
-
-        {/* mosque skyline, left */}
-        <g fill="#bfe1ca" opacity="0.9">
-          <path d="M34 520 V404 H122 V520 Z" />
-          <path d="M44 404 C44 350 112 350 112 404 Z" />
-          <rect x="76" y="336" width="2.5" height="16" />
-          <circle cx="77.2" cy="334" r="3.2" />
-          <rect x="128" y="318" width="11" height="202" />
-          <path d="M126 318 H141 L133.5 296 Z" />
-          <rect x="126" y="344" width="15" height="5" />
-          <rect x="30" y="368" width="9" height="152" />
-          <path d="M28 368 H41 L34.5 350 Z" />
-        </g>
-        <g fill="#cfe9d8" opacity="0.95">
-          <path d="M138 520 V430 H178 V520 Z" />
-          <path d="M142 430 C142 400 174 400 174 430 Z" />
-        </g>
-        {/* mosque skyline, right */}
-        <g fill="#cbe8d4" opacity="0.95">
-          <path d="M296 520 V420 H364 V520 Z" />
-          <path d="M304 420 C304 376 356 376 356 420 Z" />
-          <rect x="329" y="358" width="2.5" height="16" />
-          <circle cx="330.2" cy="356" r="3" />
-          <rect x="360" y="338" width="9" height="182" />
-          <path d="M358 338 H371 L364.5 318 Z" />
-        </g>
-
-        {/* back leaves */}
-        <Leaf t="translate(-6 430) rotate(-75) scale(1.2)" c="#7cc593" />
-        <Leaf t="translate(392 380) rotate(-115) scale(1.1)" c="#7cc593" />
-
-        <g transform={`rotate(${tilt} 200 280)`}>
-          {hand && (
-            <g>
-              {/* palm and wrist behind phone */}
-              <path d="M116 300 C112 372 126 440 150 486 L150 640 L274 640 L274 470 C292 420 298 360 292 300 Z" fill={skin} />
-              {/* fingers wrapping behind right edge */}
-              {[
-                { y: 208, w: 50 },
-                { y: 246, w: 54 },
-                { y: 284, w: 50 },
-                { y: 322, w: 42 },
-              ].map((f) => (
-                <rect key={f.y} x={262} y={f.y} width={f.w} height="32" rx="16" fill={skin} stroke={shade} strokeWidth="1.5" />
-              ))}
-            </g>
-          )}
-
-          {/* phone */}
-          <rect x="125" y="60" width="150" height="318" rx="24" fill="#0b0b0b" />
-          <g clipPath="url(#hp-screen)">
-            <rect x="131" y="66" width="138" height="306" fill="#fff" />
-            {screens.map((src, i) => (
-              <image
-                key={src}
-                href={src}
-                x="131"
-                y="66"
-                width="138"
-                height="306"
-                preserveAspectRatio="xMidYMid slice"
-                style={{ opacity: i === idx ? 1 : 0, transition: "opacity 0.6s ease" }}
-              />
-            ))}
-          </g>
-          <rect x="187" y="70" width="26" height="7" rx="3.5" fill="#0b0b0b" />
-
-          {hand && (
-            <g>
-              {/* thumb over the left-bottom edge */}
-              <rect x="108" y="318" width="92" height="36" rx="18" fill={skin} stroke={shade} strokeWidth="1.5" transform="rotate(-38 154 336)" />
-              <ellipse cx="190" cy="304" rx="9" ry="6" fill="#f8e0c8" transform="rotate(-38 190 304)" />
-            </g>
-          )}
-        </g>
-
-        {/* front leaves */}
-        <Leaf t="translate(4 478) rotate(-58) scale(1.05)" c="#2f8f50" />
-        <Leaf t="translate(26 505) rotate(-14) scale(1.15)" c="#43a363" />
-        <Leaf t="translate(70 512) rotate(-98) scale(0.85)" c="#1f6f3c" />
-        <Leaf t="translate(8 440) rotate(-95) scale(0.8)" c="#58b576" />
-        <Leaf t="translate(394 430) rotate(-128) scale(1.0)" c="#43a363" />
-        <Leaf t="translate(388 482) rotate(-160) scale(0.95)" c="#2f8f50" />
-        <Leaf t="translate(352 512) rotate(-82) scale(0.8)" c="#58b576" />
-      </g>
-    </svg>
+    <div className={`relative aspect-square ${className}`}>
+      <div className="absolute inset-x-[10%] top-0 bottom-0 rounded-t-full bg-gradient-to-b from-primary/25 via-primary/10 to-transparent border border-primary/20" />
+      {screens.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt="Hisaabi app in hand"
+          className="absolute inset-0 w-full h-full object-contain mix-blend-multiply transition-opacity duration-700"
+          style={{
+            opacity: i === idx ? 1 : 0,
+            WebkitMaskImage: "radial-gradient(ellipse at center, #000 60%, transparent 95%)",
+            maskImage: "radial-gradient(ellipse at center, #000 60%, transparent 95%)",
+          }}
+        />
+      ))}
+    </div>
   );
 };
 
@@ -458,7 +354,7 @@ const Support = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="relative"
           >
-            <HandPhone screens={["/assets/ss9.jpeg"]} className="mx-auto w-full max-w-[400px]" />
+            <PhotoPhone screens={["/assets/hand/ph9.jpg"]} className="mx-auto w-full max-w-[440px]" />
           </motion.div>
         </div>
 
