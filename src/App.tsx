@@ -128,15 +128,15 @@ const Features = () => {
 
 const Screenshots = () => {
   const screenshots = [
-    "/assets/hand/ph1.jpg",
-    "/assets/hand/ph2.jpg",
-    "/assets/hand/ph3.jpg",
-    "/assets/hand/ph4.jpg",
-    "/assets/hand/ph5.jpg",
-    "/assets/hand/ph6.jpg",
-    "/assets/hand/ph7.jpg",
-    "/assets/hand/ph8.jpg",
-    "/assets/hand/ph9.jpg",
+    "/assets/hand/ph1.webp",
+    "/assets/hand/ph2.webp",
+    "/assets/hand/ph3.webp",
+    "/assets/hand/ph4.webp",
+    "/assets/hand/ph5.webp",
+    "/assets/hand/ph6.webp",
+    "/assets/hand/ph7.webp",
+    "/assets/hand/ph8.webp",
+    "/assets/hand/ph9.webp",
   ];
   const points = ["Easy to use", "Fast & Reliable", "Secure & Private", "Cross-platform"];
 
@@ -155,7 +155,7 @@ const Screenshots = () => {
 
           <div className="relative grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-10 lg:gap-14 items-center">
             {/* Phone: screens rotate inside a fixed frame */}
-            <PhotoPhone screens={screenshots} className="mx-auto w-[300px] sm:w-[360px]" />
+            <PhotoPhone screens={screenshots} flush className="mx-auto w-[300px] sm:w-[380px] lg:-mb-12" />
 
             {/* Text */}
             <div>
@@ -240,7 +240,7 @@ const About = () => {
 
 // Real photo of a hand holding a phone (app screenshot composited on the screen) in a soft green arch with real leaf photos.
 // Several screens crossfade; one stays still.
-const PhotoPhone = ({ screens, className = "" }: { screens: string[]; className?: string }) => {
+const PhotoPhone = ({ screens, flush = false, className = "" }: { screens: string[]; flush?: boolean; className?: string }) => {
   const [idx, setIdx] = React.useState(0);
   React.useEffect(() => {
     if (screens.length < 2) return;
@@ -248,22 +248,21 @@ const PhotoPhone = ({ screens, className = "" }: { screens: string[]; className?
     return () => clearInterval(t);
   }, [screens.length]);
 
+  // flush: the wrist runs off the bottom of its card; otherwise it fades out.
+  const fade = flush ? undefined : "linear-gradient(to bottom, #000 80%, transparent 100%)";
+
   return (
-    <div className={`relative aspect-square ${className}`}>
-      <div className="absolute inset-x-[10%] top-0 bottom-0 rounded-t-full bg-gradient-to-b from-primary/25 via-primary/10 to-transparent border border-primary/20" />
-      <img src="/assets/leaf-left.webp" alt="" aria-hidden className="absolute -left-[8%] bottom-[2%] w-[36%] drop-shadow-md pointer-events-none" style={{ WebkitMaskImage: "linear-gradient(to right, #000 70%, transparent 100%)", maskImage: "linear-gradient(to right, #000 70%, transparent 100%)" }} />
-      <img src="/assets/leaf-right.webp" alt="" aria-hidden className="absolute -right-[3%] top-[36%] w-[32%] drop-shadow-md pointer-events-none" style={{ WebkitMaskImage: "linear-gradient(to right, #000 70%, transparent 100%)", maskImage: "linear-gradient(to right, #000 70%, transparent 100%)" }} />
+    <div className={`relative aspect-[1181/1000] ${className}`}>
+      <div className="absolute inset-[8%] rounded-full bg-primary/20 blur-3xl" />
+      <img src="/assets/leaf-left.webp" alt="" aria-hidden className="absolute -left-[4%] bottom-[8%] w-[30%] pointer-events-none" style={{ WebkitMaskImage: "radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%)", maskImage: "radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%)" }} />
+      <img src="/assets/leaf-right.webp" alt="" aria-hidden className="absolute -right-[2%] top-[30%] w-[26%] pointer-events-none" style={{ WebkitMaskImage: "radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%)", maskImage: "radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%)" }} />
       {screens.map((src, i) => (
         <img
           key={src}
           src={src}
           alt="Hisaabi app in hand"
-          className="absolute inset-0 w-full h-full object-contain mix-blend-multiply transition-opacity duration-700"
-          style={{
-            opacity: i === idx ? 1 : 0,
-            WebkitMaskImage: "radial-gradient(ellipse at center, #000 60%, transparent 95%)",
-            maskImage: "radial-gradient(ellipse at center, #000 60%, transparent 95%)",
-          }}
+          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ${flush ? "max-lg:[-webkit-mask-image:linear-gradient(to_bottom,#000_80%,transparent)] max-lg:[mask-image:linear-gradient(to_bottom,#000_80%,transparent)]" : ""}`}
+          style={{ opacity: i === idx ? 1 : 0, WebkitMaskImage: fade, maskImage: fade }}
         />
       ))}
     </div>
@@ -356,7 +355,7 @@ const Support = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="relative"
           >
-            <PhotoPhone screens={["/assets/hand/ph9.jpg"]} className="mx-auto w-full max-w-[440px]" />
+            <PhotoPhone screens={["/assets/hand/ph9.webp"]} className="mx-auto w-full max-w-[460px]" />
           </motion.div>
         </div>
 
